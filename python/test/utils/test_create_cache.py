@@ -66,7 +66,7 @@ def check_relative_csv_file_result(cache_file_fmt, csvfilename, cachedir):
 
     with open(original_csv_path, 'r') as of, open(csvfilename, 'r') as cf:
         for row in of:
-            assert row == cf.readline()
+            assert row == cf.readline(5_000_000)
 
 
 @pytest.mark.parametrize('input_file_fmt', ['png', 'csv'])
