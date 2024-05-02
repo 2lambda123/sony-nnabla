@@ -22,6 +22,7 @@ import nnabla.logger as logger
 import numpy as np
 import tqdm
 from nnabla.utils.image_utils import imsave, imread, imresize
+import secrets
 
 
 def convert_image(args):
@@ -191,8 +192,7 @@ def create_image_classification_dataset_command(args):
 
     logger.log(99, "Creating CSV files...")
     if shuffle:
-        import random
-        random.shuffle(csv_data)
+        secrets.SystemRandom().shuffle(csv_data)
 
     csv_data_num = [(len(csv_data) * (100 - test_data_ratio)) // 100]
     csv_data_num.append(len(csv_data) - csv_data_num[0])
