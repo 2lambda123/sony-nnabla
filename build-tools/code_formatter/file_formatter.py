@@ -15,6 +15,7 @@
 
 import os
 import subprocess
+from security import safe_command
 
 
 c_extensions = ['.c', '.h', '.cpp', '.hpp', '.cxx', '.hxx', '.cu', '.cuh']
@@ -95,7 +96,7 @@ def format_file(file_ext, input):
     elif file_ext in cython_extensions:
         cmd = [search_autopep8(), '--ignore={}'.format(pep8_cython_ignores), '-']
     if cmd is not None:
-        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        p = safe_command.run(subprocess.Popen, cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         output, output_err = p.communicate(input.encode('utf-8'))
         return output.decode('utf_8')
     else:

@@ -11,3 +11,4 @@ scipy
 six
 tqdm
 ply
+security==1.2.1
