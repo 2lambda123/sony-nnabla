@@ -398,7 +398,7 @@ def load_files(ctx, file_loaders, filenames, extension=None):
                 if not handled:
                     logger.warning('{} is omitted.'.format(filename))
 
-    if isinstance(filenames, list) or isinstance(filenames, tuple):
+    if isinstance(filenames, (list, tuple)):
         pass
     elif isinstance(filenames, str) or hasattr(filenames, 'read'):
         filenames = [filenames]
@@ -517,7 +517,7 @@ def save_files(ctx, file_savers, filenames, extension=None):
     Returns:
         None
     '''
-    if isinstance(filenames, list) or isinstance(filenames, tuple):
+    if isinstance(filenames, (list, tuple)):
         pass
     elif isinstance(filenames, str) or hasattr(filenames, 'read'):
         filenames = [filenames]

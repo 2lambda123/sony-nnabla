@@ -514,12 +514,12 @@ def create_function_nnp(inputs, outputs, func_name, func_args, func_kwargs):
                     if func.name == 'Transpose':
                         pass
                     else:
-                        if isinstance(a, tuple) or isinstance(a, list):
+                        if isinstance(a, (tuple, list)):
                             a = list(a)
                         else:
                             a = [a]
                         a = [x + 1 for x in a]
-                if isinstance(a, tuple) or isinstance(a, list):
+                if isinstance(a, (tuple, list)):
                     if arg['type'] == 'Shape':
                         exec('param.{}.dim.extend(list(a))'.format(arg_name))
                     else:

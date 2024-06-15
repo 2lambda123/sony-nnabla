@@ -885,7 +885,7 @@ def load(filenames, prepare_data_iterator=True, batch_size=None, exclude_paramet
     opti_h5_files = {}
     tmpdir = tempfile.mkdtemp()
 
-    if isinstance(filenames, list) or isinstance(filenames, tuple):
+    if isinstance(filenames, (list, tuple)):
         pass
     elif isinstance(filenames, str) or hasattr(filenames, 'read'):
         filenames = [filenames]
